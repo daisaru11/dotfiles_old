@@ -1,0 +1,24 @@
+[submodule ".vim/bundle/vim-pathogen"]
+	path = .vim/bundle/vim-pathogen
+	url = git://github.com/paulnicholson/vim-pathogen.git
+[submodule ".vim/autoload"]
+	path = .vim/autoload
+	url = git://github.com/paulnicholson/vim-pathogen.git
+[submodule ".vim/bundle/l9"]
+	path = .vim/bundle/l9
+	url = git://github.com/vim-scripts/L9.git
+[submodule ".vim/bundle/neocomplcache"]
+	path = .vim/bundle/neocomplcache
+	url = https://github.com/Shougo/neocomplcache.git
+[submodule ".vim/bundle/vim-quickrun"]
+	path = .vim/bundle/vim-quickrun
+	url = https://github.com/thinca/vim-quickrun.git
+[submodule ".vim/bundle/bufexplorer"]
+	path = .vim/bundle/bufexplorer
+	url = https://github.com/markabe/bufexplorer.git
+[submodule ".vim/bundle/vim-yankring"]
+	path = .vim/bundle/vim-yankring
+	url = https://github.com/chrismetcalf/vim-yankring.git
+[submodule ".vim/bundle/vim-ref"]
+	path = .vim/bundle/vim-ref
+	url = https://github.com/thinca/vim-ref.git
