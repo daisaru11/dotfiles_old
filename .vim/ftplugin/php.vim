@@ -9,5 +9,5 @@ let php_parent_error_open = 1
 ""let php_sync_method = x
 
 " for QuickFix
-setlocal makeprg=php\ -l\ %
-setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+"setlocal makeprg=php\ -l\ %
+"setlocal errorformat=%m\ in\ %f\ on\ line\ %l
