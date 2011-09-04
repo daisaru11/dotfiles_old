@@ -14,6 +14,7 @@ set showmatch "括弧入力時の対応する括弧を表示
 set laststatus=2 "ステータスラインを常に表示
 set scrolloff=5 "スクロールの余白
 set nowrap
+set cursorline
 
 "#######################
 " Move
@@ -57,7 +58,7 @@ colorscheme desert
 " Key Mapping
 "#######################
 "ノーマルモードで空白を挿入
-nnoremap <CR> o<ESC>
+"nnoremap <C-m> o<ESC>
 
 "検索語を真ん中に表示
 nmap n nzz
@@ -85,14 +86,18 @@ imap <C-l> <Right>
 "#######################
 " plugin
 "#######################
+
+"pathogen
+filetype off
+call pathogen#runtime_append_all_bundles()
+
 "ftplugin
 filetype plugin on
 
-"pathogen
-call pathogen#runtime_append_all_bundles()
-
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+let g:neocomplcache_force_overwrite_completefunc = 1 " なんかエラー出るのでとりあえず
+
 " スニペットファイルの配置場所
 let g:NeoComplCache_SnippetsDir = '~/.vim/snippets'
 imap <silent> <C-S> <Plug>(neocomplcache_snippets_expand)
@@ -104,9 +109,7 @@ nnoremap <C-l> :BufExplorer<CR>
 "YankRing
 nnoremap ,y :YRShow<CR>
 
-"VTreeExplorer
-let g:treeExplVertical=1
-
 "syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+let g:syntastic_disabled_filetypes = []
