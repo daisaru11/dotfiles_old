@@ -95,8 +95,8 @@ call pathogen#runtime_append_all_bundles()
 filetype plugin on
 
 " neocomplcache
-let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
-let g:neocomplcache_force_overwrite_completefunc = 1 " なんかエラー出るのでとりあえず
+"let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+"let g:neocomplcache_force_overwrite_completefunc = 1 " なんかエラー出るのでとりあえず
 
 " スニペットファイルの配置場所
 let g:NeoComplCache_SnippetsDir = '~/.vim/snippets'
