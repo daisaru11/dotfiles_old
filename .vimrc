@@ -2,6 +2,10 @@ set nocompatible "vi非互換モード
 " ファイルを開いた際に、前回終了時の行で起動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
+" スワップファイル
+set swapfile
+set directory=/tmp
+
 "#######################
 " Display
 "#######################
