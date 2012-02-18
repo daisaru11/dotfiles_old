@@ -87,7 +87,7 @@ case ${UID} in
 	;;
 *)
 	#USER
-	PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}[ %{$fg_bold[green]%}%n@%m ${RESET}in ${YELLOW}%(5~,%-2~/.../%2~,%~)% ${RESET} ]
+	PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%% %{$fg_bold[green]%}%n@%m ${RESET}in ${YELLOW}%(5~,%-2~/.../%2~,%~)% ${RESET} :
 ${WHITE}$ ${RESET}'
 	RPROMPT='${RESET}${WHITE}[%D %*] ${RESET}'
 	SPROMPT="%B${BLUE}%r is correct? [n,y,a,e]:${RESET}%b "
