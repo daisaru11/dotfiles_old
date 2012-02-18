@@ -63,31 +63,38 @@
 
 autoload colors
 colors
+DEFAULT=$'%{\e[1;0m%}'
+RESET="%{${reset_color}%}"
+#GREEN=$'%{\e[1;32m%}'
+GREEN="%{${fg[green]}%}"
+#BLUE=$'%{\e[1;35m%}'
+BLUE="%{${fg[blue]}%}"
+RED="%{${fg[red]}%}"
+CYAN="%{${fg[cyan]}%}"
+MAGENTA="%{${fg[magenta]}%}"
+YELLOW="%{${fg[yellow]}%}"
+WHITE="%{${fg[white]}%}"
+setopt prompt_subst
 case ${UID} in
 0)
-	PROMPT="[%{${fg[blue]}%}%n@%m%{${reset_color}%}] %{${fg[blue]}%}#%{${reset_color}%} "
-	PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
-	SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-	RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
+	#ROOT
+	PROMPT="[${BLUE}%n@%m${RESET}] ${BLUE}#${RESET} "
+	PROMPT2="%B${BLUE}%_#${RESET}%b "
+	SPROMPT="%B${BLUE}%r is correct? [n,y,a,e]:${RESET}%b "
+	RPROMPT="${BLUE}[%/]${RESET}"
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-		PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+		PROMPT="${CYAN}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
 	;;
 *)
-	DEFAULT=$'%{\e[1;0m%}'
-	RESET="%{${reset_color}%}"
-	#GREEN=$'%{\e[1;32m%}'
-	GREEN="%{${fg[green]}%}"
-	#BLUE=$'%{\e[1;35m%}'
-	BLUE="%{${fg[blue]}%}"
-	RED="%{${fg[red]}%}"
-	CYAN="%{${fg[cyan]}%}"
-	WHITE="%{${fg[white]}%}"
-	setopt prompt_subst
-	#PROMPT='${fg[white]}%(5~,%-2~/.../%2~,%~)% ${RED} $ ${RESET}'
-	PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}'
-	RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${WINDOW:+"[$WINDOW]"} ${RESET}'
+	#USER
+	PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}[ %{$fg_bold[green]%}%n@%m ${RESET}in ${YELLOW}%(5~,%-2~/.../%2~,%~)% ${RESET} ]
+${WHITE}$ ${RESET}'
+	RPROMPT='${RESET}${WHITE}[%D %*] ${RESET}'
+	SPROMPT="%B${BLUE}%r is correct? [n,y,a,e]:${RESET}%b "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-		PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+		PROMPT="${CYAN}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+	PROMPT="
+${PROMPT}"
 	;;
 esac
 
