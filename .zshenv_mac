@@ -1,0 +1,30 @@
+## Environment variable configuration
+#
+# LANG
+#
+export LANG=ja_JP.UTF-8
+
+##
+# EDITOR
+#
+export EDITOR=vim
+# vimがなくてもvimでviを起動する。
+if ! type vim > /dev/null 2>&1; then
+    alias vim=vi
+fi
+
+##
+# SCREEN
+#
+alias screen="/usr/local/bin/screen"
+
+##
+# WORDCHARS
+#
+# '/'を削る
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+##
+# node.js
+#
+export NODE_PATH=/usr/local/lib/node_modules

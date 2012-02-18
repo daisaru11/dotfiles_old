@@ -145,6 +145,8 @@ alias df="df -h"
 
 alias su="su -l"
 
+alias cp="cp -i"
+
 # set terminal title including current directory
 #
 case "${TERM}" in
