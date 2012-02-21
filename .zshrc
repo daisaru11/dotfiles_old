@@ -3,38 +3,6 @@
 # set prompt
 
 #################################################
-# 色一覧
-#################################################
-# 00: なにもしない
-# 01: 太字化
-# 04: 下線
-# 05: 点滅
-# 07: 前背色反転
-# 08: 表示しない
-# 22: ノーマル化
-# 24: 下線なし
-# 25: 点滅なし
-# 27: 前背色反転なし
-# 30: 黒(前景色)
-# 31: 赤(前景色)
-# 32: 緑(前景色)
-# 33: 茶(前景色)
-# 34: 青(前景色)
-# 35: マゼンタ(前景色)
-# 36: シアン(前景色)
-# 37: 白(前景色)
-# 39: デフォルト(前景色)
-# 40: 黒(背景色)
-# 41: 赤(背景色)
-# 42: 緑(背景色)
-# 43: 茶(背景色)
-# 44: 青(背景色)
-# 45: マゼンタ(背景色)
-# 46: シアン(背景色)
-# 47: 白(背景色)
-# 49: デフォルト(背景色)
-
-#################################################
 # プロンプト表示フォーマット
 # http://zsh.sourceforge.net/Doc/Release/zsh_12.html#SEC40
 #################################################
@@ -63,31 +31,38 @@
 
 autoload colors
 colors
+DEFAULT=$'%{\e[1;0m%}'
+RESET="%{${reset_color}%}"
+#GREEN=$'%{\e[1;32m%}'
+GREEN="%{${fg[green]}%}"
+#BLUE=$'%{\e[1;35m%}'
+BLUE="%{${fg[blue]}%}"
+RED="%{${fg[red]}%}"
+CYAN="%{${fg[cyan]}%}"
+MAGENTA="%{${fg[magenta]}%}"
+YELLOW="%{${fg[yellow]}%}"
+WHITE="%{${fg[white]}%}"
+setopt prompt_subst
 case ${UID} in
 0)
-	PROMPT="[%{${fg[blue]}%}%n@%m%{${reset_color}%}] %{${fg[blue]}%}#%{${reset_color}%} "
-	PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
-	SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-	RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
+	#ROOT
+	PROMPT="[${BLUE}%n@%m${RESET}] ${BLUE}#${RESET} "
+	PROMPT2="%B${BLUE}%_#${RESET}%b "
+	SPROMPT="%B${BLUE}%r is correct? [n,y,a,e]:${RESET}%b "
+	RPROMPT="${BLUE}[%/]${RESET}"
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-		PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+		PROMPT="${CYAN}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
 	;;
 *)
-	DEFAULT=$'%{\e[1;0m%}'
-	RESET="%{${reset_color}%}"
-	#GREEN=$'%{\e[1;32m%}'
-	GREEN="%{${fg[green]}%}"
-	#BLUE=$'%{\e[1;35m%}'
-	BLUE="%{${fg[blue]}%}"
-	RED="%{${fg[red]}%}"
-	CYAN="%{${fg[cyan]}%}"
-	WHITE="%{${fg[white]}%}"
-	setopt prompt_subst
-	#PROMPT='${fg[white]}%(5~,%-2~/.../%2~,%~)% ${RED} $ ${RESET}'
-	PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}'
-	RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${WINDOW:+"[$WINDOW]"} ${RESET}'
+	#USER
+	PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%% %{$fg_bold[green]%}%n@%m ${RESET}in ${YELLOW}%(5~,%-2~/.../%2~,%~)% ${RESET} :
+${WHITE}$ ${RESET}'
+	RPROMPT='${RESET}${WHITE}[%D %*] ${RESET}'
+	SPROMPT="%B${BLUE}%r is correct? [n,y,a,e]:${RESET}%b "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-		PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+		PROMPT="${CYAN}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+	PROMPT="
+${PROMPT}"
 	;;
 esac
 
@@ -106,6 +81,7 @@ setopt correct
 # 無駄な末尾の / を削除する
 setopt auto_remove_slash
 
+bindkey -e
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 bindkey "\\ep" history-beginning-search-backward-end
@@ -169,6 +145,8 @@ alias du="du -h"
 alias df="df -h"
 
 alias su="su -l"
+
+alias cp="cp -i"
 
 # set terminal title including current directory
 #
