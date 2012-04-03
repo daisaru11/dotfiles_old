@@ -99,12 +99,13 @@ setopt share_history        # share command history data
 
 ## Completion configuration
 #
+#unsetopt auto_list
+unsetopt menu_complete
+
 fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit
 
-#unsetopt auto_list
-unsetopt menu_complete
 
 ##↑Allow Key completion
 #
@@ -114,14 +115,14 @@ unsetopt menu_complete
 ##
 ## expand aliases before completing
 ##
-setopt complete_aliases     # aliased ls needs if file/dir completions work
+#setopt complete_aliases     # aliased ls needs if file/dir completions work
 
 # 補完表示を全てする
 zstyle ':completion:*' verbose 'yes'
-# 補完の機能を拡張
-zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-# 補完候補で入力された文字でまず補完してみて、補完不可なら大文字小文字を変換して補完する
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z} r:|[-_.]=**' '+m:{A-Z}={a-z} r:|[-_.]=**'
+## 補完の機能を拡張
+#zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+## 補完候補で入力された文字でまず補完してみて、補完不可なら大文字小文字を変換して補完する
+#zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z} r:|[-_.]=**' '+m:{A-Z}={a-z} r:|[-_.]=**'
 
 
 alias where="command -v"
