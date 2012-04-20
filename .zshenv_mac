@@ -8,6 +8,7 @@ export LANG=ja_JP.UTF-8
 # EDITOR
 #
 export EDITOR=vim
+[ -x /usr/local/bin/vim ] && alias vim=/usr/local/bin/vim
 # vimがなくてもvimでviを起動する。
 if ! type vim > /dev/null 2>&1; then
     alias vim=vi
@@ -16,7 +17,8 @@ fi
 ##
 # SCREEN
 #
-alias screen="/usr/local/bin/screen"
+[ -x /usr/local/bin/screen ] && alias screen=/usr/local/bin/screen
+[ -x $HOME/local/bin/screen ] && alias screen=$HOME/local/bin/screen
 
 ##
 # WORDCHARS
@@ -48,3 +50,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 #    source `which virtualenvwrapper.sh`
 #fi
 
+##
+# Titanium
+#
+alias ti='~/Library/Application\ Support/Titanium/mobilesdk/osx/1.7.0/iphone/builder.py'
