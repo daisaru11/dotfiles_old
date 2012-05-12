@@ -119,4 +119,7 @@ nnoremap ,y :YRShow<CR>
 "syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_disabled_filetypes = []
+"let g:syntastic_disabled_filetypes = []
+let g:syntastic_mode_map = { 'mode': 'passive',
+	\ 'active_filetypes': ['php', 'python', 'ruby', 'javascript', 'coffee', 'html', 'css'],
+	\ 'passive_filetypes': ['scala'] }
