@@ -123,3 +123,4 @@ let g:syntastic_auto_loc_list=2
 let g:syntastic_mode_map = { 'mode': 'passive',
 	\ 'active_filetypes': ['php', 'python', 'ruby', 'javascript', 'coffee', 'html', 'css'],
 	\ 'passive_filetypes': ['scala'] }
+let g:syntastic_javascript_checker = 'jshint'
