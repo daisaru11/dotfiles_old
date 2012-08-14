@@ -2,6 +2,46 @@
 #
 # set prompt
 
+
+## functions
+#
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+setopt prompt_subst
+
+function prompt-git-current-branch {
+	local name st color gitdir action
+	if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
+		return
+	fi
+
+	name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
+	if [[ -z $name ]]; then
+		return
+	fi
+
+	gitdir=`git rev-parse --git-dir 2> /dev/null`
+	action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+
+	if [[ -e "$gitdir/prompt-nostatus" ]]; then
+		echo "$name$action "
+		return
+	fi
+
+	st=`git status 2> /dev/null`
+	if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+		color=%F{green}
+	elif [[ -n `echo "$st" | grep "^no changes added"` ]]; then
+		color=%F{yellow}
+	elif [[ -n `echo "$st" | grep "^# Changes to be committed"` ]]; then
+		color=%B%F{red}
+	else
+		color=%F{red}
+	fi
+	echo "${color}[${name}${action}]%f%b "
+}
+
+
+
 #################################################
 # プロンプト表示フォーマット
 # http://zsh.sourceforge.net/Doc/Release/zsh_12.html#SEC40
@@ -29,6 +69,10 @@
 # %W 年月日表示(mm/dd/yy)
 # %D 年月日表示(yy-mm-dd)
 
+
+## Prompt displaying configuration
+# 
+#
 autoload colors
 colors
 DEFAULT=$'%{\e[1;0m%}'
@@ -42,7 +86,8 @@ CYAN="%{${fg[cyan]}%}"
 MAGENTA="%{${fg[magenta]}%}"
 YELLOW="%{${fg[yellow]}%}"
 WHITE="%{${fg[white]}%}"
-setopt prompt_subst
+
+
 case ${UID} in
 0)
 	#ROOT
@@ -55,9 +100,9 @@ case ${UID} in
 	;;
 *)
 	#USER
-	PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%% %{$fg_bold[green]%}%n@%m ${RESET}in ${YELLOW}%(5~,%-2~/.../%2~,%~)% ${RESET} :
+	PROMPT='${RESET}${BLUE}${WINDOW:+"[$WINDOW]"}${RESET}%% %{$fg_bold[blue]%}%n@%m ${RESET}in `prompt-git-current-branch`${YELLOW}%(5~,%-2~/.../%2~,%~)% ${RESET} :
 ${WHITE}$ ${RESET}'
-	RPROMPT='${RESET}${WHITE}[%D %*] ${RESET}'
+	RPROMPT='${RESET} ${WHITE}[%D %*] ${RESET}'
 	SPROMPT="%B${BLUE}%r is correct? [n,y,a,e]:${RESET}%b "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 		PROMPT="${CYAN}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"

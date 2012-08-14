@@ -73,3 +73,12 @@
 [submodule ".vim/bundle/peaksea-colorscheme"]
 	path = .vim/bundle/peaksea-colorscheme
 	url = https://github.com/vim-scripts/peaksea.git
+[submodule ".vim/bundle/jellybeans-colorscheme"]
+	path = .vim/bundle/jellybeans-colorscheme
+	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule ".vim/bundle/Hemisu-colorscheme"]
+	path = .vim/bundle/Hemisu-colorscheme
+	url = https://github.com/noahfrederick/Hemisu.git
+[submodule ".vim/bundle/chlordane-colorscheme"]
+	path = .vim/bundle/chlordane-colorscheme
+	url = https://github.com/vim-scripts/chlordane.vim.git
