@@ -91,3 +91,6 @@
 [submodule ".vim/bundle/jedi-vim"]
 	path = .vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule ".vim/bundle/nyancat"]
+	path = .vim/bundle/nyancat
+	url = https://github.com/koron/nyancat-vim.git
