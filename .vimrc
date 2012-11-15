@@ -102,7 +102,7 @@ filetype plugin on
 autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
 
 " neocomplcache
-"let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 "let g:neocomplcache_force_overwrite_completefunc = 1 " なんかエラー出るのでとりあえず
 
 " スニペットファイルの配置場所
@@ -137,5 +137,6 @@ let g:Tex_FormatDependency_pdf = 'dvi,pdf'
 "jedi
 let g:jedi#auto_initialization = 1
 let g:jedi#rename_command = "<leader>R"
-let g:jedi#popup_on_dot = 1
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_function_definition = 0
 autocmd FileType python let b:did_ftplugin = 1

@@ -45,7 +45,11 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 ##
 # pythonbrew
 #
-[ -f $HOME/.pythonbrew/etc/bashrc ] && source $HOME/.pythonbrew/etc/bashrc
+#[ -f $HOME/.pythonbrew/etc/bashrc ] && source $HOME/.pythonbrew/etc/bashrc
+##
+# PYTHONPATH
+#
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 ##
 # virtualenvwrapper
