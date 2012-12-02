@@ -86,6 +86,10 @@ imap <C-k> <Up>
 imap <C-h> <Left>
 imap <C-l> <Right>
 
+" コロンセミコロン入れ変え
+noremap ; :
+noremap : ;
+
 
 "#######################
 " plugin
