@@ -144,3 +144,20 @@ let g:jedi#rename_command = "<leader>R"
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_function_definition = 0
 autocmd FileType python let b:did_ftplugin = 1
+
+"clang
+if !exists('g:neocomplcache_force_omni_patterns')
+	let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_force_omni_patterns.c =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.objc =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.objcpp =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_use_library = 1
