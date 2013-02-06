@@ -81,15 +81,16 @@ nnoremap <C-w>d :bd<CR>
 " insert mode での移動
 imap <C-e> <END>
 imap <C-a> <HOME>
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-h> <Left>
-imap <C-l> <Right>
+"imap <C-j> <Down>
+"imap <C-k> <Up>
+"imap <C-h> <Left>
+"imap <C-l> <Right>
+imap <C-b> <Left>
+imap <C-f> <Right>
 
 " コロンセミコロン入れ変え
 noremap ; :
 noremap : ;
-
 
 "#######################
 " plugin
