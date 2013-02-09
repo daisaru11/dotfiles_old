@@ -40,6 +40,9 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=0
 
+" 補完
+set completeopt=menu,menuone,longest " プレビューウィンドウ出さない
+
 "#######################
 " Search
 "#######################
@@ -108,7 +111,7 @@ autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
-"let g:neocomplcache_force_overwrite_completefunc = 1 " なんかエラー出るのでとりあえず
+let g:neocomplcache_force_overwrite_completefunc = 1
 
 " スニペットファイルの配置場所
 let g:NeoComplCache_SnippetsDir = '~/.vim/snippets'
