@@ -111,12 +111,57 @@ autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
-let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+	let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.css = '\v^\s+\w+|\w+[):;]?\s+|[@!]'
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+"let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+"let g:neocomplcache_omni_patterns.java = '\%(\.\)\h\w*'
 
 " スニペットファイルの配置場所
 let g:NeoComplCache_SnippetsDir = '~/.vim/snippets'
 imap <silent> <C-S> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-S> <Plug>(neocomplcache_snippets_expand)
+
+"clang
+if !exists('g:neocomplcache_force_omni_patterns')
+	let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_force_omni_patterns.c =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.objc =
+	\ '\h\w\+\|[^.[:digit:] *\t]\%(\.\|->\)'
+	"\ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.objcpp =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_use_library = 1
+"let g:clang_snippets = 1
+"let g:clang_exec = '/usr/local/bin/clang'
+"let g:clang_library_path = '/usr/local/lib/libclang.dylib'
+
 
 "BufferExplorer
 nnoremap <C-l> :BufExplorer<CR>
@@ -148,20 +193,3 @@ let g:jedi#rename_command = "<leader>R"
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_function_definition = 0
 autocmd FileType python let b:did_ftplugin = 1
-
-"clang
-if !exists('g:neocomplcache_force_omni_patterns')
-	let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache_force_omni_patterns.c =
-	\ '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp =
-	\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objc =
-	\ '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.objcpp =
-	\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_use_library = 1
