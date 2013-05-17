@@ -57,9 +57,6 @@ set wildmode=longest,list
 "#######################
 " Others
 "#######################
-"カラースキーマ
-set t_Co=256
-colorscheme desert
 
 "#######################
 " Key Mapping
@@ -105,6 +102,11 @@ call pathogen#runtime_append_all_bundles()
 
 "ftplugin
 filetype plugin on
+
+"カラースキーマ
+set t_Co=256
+"colorscheme desert
+colorscheme jellybeans
 
 "coffeescript
 autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
