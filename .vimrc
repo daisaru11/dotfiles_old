@@ -34,7 +34,7 @@ set smartindent "オートインデント
 " tab関連
 ":set expandtab "タブの代わりに空白文字挿入
 set list
-set listchars=trail:-,tab:>\ ,extends:<
+set listchars=trail:-,tab:▸\ ,extends:<
 
 set tabstop=4
 set shiftwidth=4
