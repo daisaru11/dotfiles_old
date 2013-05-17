@@ -109,7 +109,7 @@ set t_Co=256
 colorscheme jellybeans
 
 "coffeescript
-autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
+"autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
