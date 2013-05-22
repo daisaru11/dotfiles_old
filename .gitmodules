@@ -97,3 +97,6 @@
 [submodule ".vim/bundle/clang_complete"]
 	path = .vim/bundle/clang_complete
 	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule ".vim/bundle/gitv"]
+	path = .vim/bundle/gitv
+	url = https://github.com/gregsexton/gitv.git
