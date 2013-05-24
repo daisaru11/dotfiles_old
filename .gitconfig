@@ -3,3 +3,22 @@
 	email = daisaru11@gmail.com
 [color]
 	ui = auto
+
+[alias]
+	st = status
+	sh = show
+	ft = fetch
+	ci = commit
+	co = checkout
+
+# branch
+	br = branch
+	ba = branch -a
+
+# log
+	ls = log --stat
+	lp = log -p
+	ll = log --pretty=\"format:%ad %h (%an): %s\"
+	lr = log origin
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
